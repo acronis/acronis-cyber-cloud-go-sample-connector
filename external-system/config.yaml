@@ -1,0 +1,52 @@
+# Copyright (c) 2021 Acronis International GmbH
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+# db defines the parameters required to connect to the external system database
+db:
+  # type of database
+  dialect: "postgres"
+  # hostname to connect to the database
+  host: "postgres"
+  # port to connect to the database
+  port: 5432
+  # username to authenticate for connection to the database. Provide this value using env var DB_USER.
+  #username: ""
+  # password to authenticate for connection to the database. Provide this value using env var DB_PASSWORD.
+  #password: ""
+  # database name to connect to
+  database: "external"
+# authSettings(optional) defines the parameters required to setup SSO and connect to IDP provider
+authSettings:
+  # enabled set to false to disable sso authentication
+  enabled: false
+  # assigned ID for the application for SSO. Provide this value using env var SSO_AUTH_CLIENT_ID.
+  #clientID: ""
+  # assigned secret for the application for SSO. Provide this value using env var SSO_AUTH_CLIENT_SECRET.
+  #clientSecret: ""
+  # url address of the IDP provider
+  idpAddress: "https://test.cloud.acronis.com"
+  # url that the authorization server will redirect the user back to the application
+  # this url should point to your server
+  redirectURL: "http://externalsystem/auth/acronis/callback"
+  # secret use in initializing session store. Provide this value using env var SSO_AUTH_SESSION_SECRET.
+  #sessionSecret: ""
+# webUIDirectory(optional) is path to web ui directory containing pages for SSO.
+# Use only when authSettings is true
+webUIDirectory: "external-system/web"
